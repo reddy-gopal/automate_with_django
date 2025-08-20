@@ -1,8 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 import csv
-from dataentry.models import Student
-import datetime
 from django.apps import apps
+from dataentry.utils import exported_file
 class Command(BaseCommand):
     help = "Export data from student model to a CSV file"
 
@@ -29,8 +28,7 @@ class Command(BaseCommand):
             
         data = model.objects.all()
 
-        timestamp = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        file_path = f'exported_students_data_{timestamp}.csv'
+        file_path = exported_file(model_name)
 
         with open(file_path , 'w', newline= '') as file:
             writer = csv.writer(file)
