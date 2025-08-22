@@ -29,6 +29,7 @@ class Command(BaseCommand):
         data = model.objects.all()
 
         file_path = exported_file(model_name)
+        print(file_path)
 
         with open(file_path , 'w', newline= '') as file:
             writer = csv.writer(file)

@@ -1,0 +1,16 @@
+{% load socialaccount %}
+
+<h2>Login</h2>
+
+<!-- Google Login Button -->
+<a href="{% provider_login_url 'google' %}">
+    <button style="padding:10px; background:green; color:white; border:none; border-radius:5px;">
+        Login with Google
+    </button>
+</a>
+
+<form method="post" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="padding:10px; background:green; color:white; border:none; border-radius:5px;">Login</button>
+</form>

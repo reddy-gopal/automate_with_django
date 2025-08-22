@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-center mb-5">⚡ Automate The Boring Stuff With Django</h2>
+
+  <div class="row g-4">
+    <!-- Import Data -->
+    <div class="col-md-4">
+      <a href="{% url 'import' %}" class="text-decoration-none">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">📂 Import Data</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-muted">Upload CSV files and insert records into any model table.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Export Data -->
+    <div class="col-md-4">
+      <a href="{% url 'export_data' %}" class="text-decoration-none">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">📤 Export Data</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-muted">Download CSV files from selected model tables.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Future Feature (example card) -->
+    <!-- <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-warning text-dark">
+          <h5 class="mb-0">🚀 Coming Soon</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-muted">Stay tuned for more automation tools.</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="col-md-4">
+      <a href="{% url 'send_email' %}" class="text-decoration-none">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Sending Bulk  Emails</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-muted">Sending Thousands of Emails at Once</p>
+          </div>
+        </div>
+      </a>
+    </div>
+</div>
+{% endblock %}

@@ -13,6 +13,7 @@ from .utils import check_csv_errors
 
 def import_data(request):
     all_models = get_all_custom_models()
+    print(all_models)
     if request.method == 'POST':
         file_path = request.FILES.get('file_path')
         model_name = request.POST.get('model_name')
@@ -40,7 +41,7 @@ def import_data(request):
 
 
 def home(request):
-    return HttpResponse("Welcome..")
+    return render(request, 'home.html')
 
 
 from dataentry.tasks import celery_testing
@@ -66,3 +67,7 @@ def export_data(request):
         redirect('export_data')
     
     return render(request , 'exportdata.html', {"models": all_models})
+
+
+def login(request):
+    return render(request, 'account/login.html')
