@@ -7,4 +7,6 @@ urlpatterns = [
     path('celery_test/', views.celery_task_test),
     path('export_data/', views.export_data , name= 'export_data'),
     path('', views.login, name='login'),
+    path('employee/', views.all_employees),
+    path('ex/', views.example)
 ]

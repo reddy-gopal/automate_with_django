@@ -71,3 +71,17 @@ def export_data(request):
 
 def login(request):
     return render(request, 'account/login.html')
+
+from django.http import HttpResponse
+from .models import Employee
+from asgiref.sync import sync_to_async
+from .decorators import cache_for_anonymous
+
+@cache_for_anonymous(60*15)
+def all_employees(request):
+    employees = list(Employee.objects.values_list("employee_name", flat=True))
+    return HttpResponse(f"Employees: {employees}")
+
+
+def example(request):
+    return render(request, 'example.html')

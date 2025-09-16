@@ -46,25 +46,37 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "crispy_forms",
     "crispy_bootstrap5",
+    'ckeditor',
+    "debug_toolbar",
 ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
+STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/static/'
 SITE_ID = 2
 
 MIDDLEWARE = [
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # 'dataentry.middleware.TimeMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     "allauth.account.middleware.AccountMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'awd_main.urls'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 
 TEMPLATES = [
     {
@@ -99,6 +111,18 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",   # Django default
     "allauth.account.auth_backends.AuthenticationBackend",  # allauth
 )
+
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+    }
+}
+
+CACHE_MIDDLEWARE_SECONDS = 600 
+
 
 
 

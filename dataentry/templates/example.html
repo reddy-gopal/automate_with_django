@@ -1,0 +1,7 @@
+{% load shop_tags %}
+
+{% get_recent_products as recent_products %}
+{% for p in recent_products %}
+   <p>{{ p.employee_name }}</p>
+   <p>{{ p.salary | currency }}</p>
+{% endfor %}

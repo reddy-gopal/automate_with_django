@@ -1,11 +1,11 @@
 import os
 
-from django.apps import apps
 from awd_main.celery import app
 import time
 from django.core.management import call_command
 from django.core.mail import EmailMessage
 from awd_main import settings
+
 @app.task
 def celery_testing():
     time.sleep(10)
